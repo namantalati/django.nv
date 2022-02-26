@@ -7,7 +7,6 @@ jobs:
       - run: |                              # similar to "script" in GitLab
           pip install -r requirements.txt
           python manage.py check
-
   test:
     docker:
       - image: python:3.6
@@ -54,31 +53,31 @@ workflows:
             branches:
               only:
                 - main
-      - test
+      - test:
           requires:
             - build
           filters:
             branches:
               only:
-                - main
-      - integration
+                - main  
+      - integration:
           requires:
             - test
           filters:
             branches:
               only:
-                - main
-      - prod
+                - main 
+      - prod:
           requires:
             - integration
           filters:
             branches:
               only:
-                - main
-      - artifact
+                - main 
+      - artifact:
           requires:
             - prod
           filters:
             branches:
               only:
-                - main
+                - main        
