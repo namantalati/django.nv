@@ -70,6 +70,13 @@ workflows:
             branches:
               only:
                 - main  
+       - artifact:
+          requires:
+            - prod
+          filters:
+            branches:
+              only:
+                - main                 
       - integration:
           requires:
             - test
