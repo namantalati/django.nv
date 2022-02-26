@@ -75,7 +75,7 @@ workflows:
             branches:
               only:
                 - main
-      - artofact
+      - artifact
           requires:
             - prod
           filters:
