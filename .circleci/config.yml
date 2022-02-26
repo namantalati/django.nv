@@ -35,14 +35,12 @@ jobs:
       - checkout
       - run: echo "This is a deploy step"
       
-  artifacts:
-    working_directory: ~/django.nv
+  artifact:
     steps:
       - checkout
       - run:
           command: |
             echo "hello" > hello.txt
-          when: always
       - store_artifacts:
           path: /.circleci
           
