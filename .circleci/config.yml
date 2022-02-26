@@ -70,7 +70,7 @@ workflows:
             branches:
               only:
                 - main  
-       - artifact:
+      - release:
           requires:
             - prod
           filters:
