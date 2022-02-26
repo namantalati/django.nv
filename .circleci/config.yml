@@ -24,10 +24,9 @@ jobs:
       - checkout
       - run:
           command: |
-            set -e
             echo "This is an integration step"
             exit 1
-      
+          when: on_fail
 
   prod:
     docker:
@@ -35,7 +34,19 @@ jobs:
     steps:
       - checkout
       - run: echo "This is a deploy step"
-
+      
+  artifacts:
+    working_directory: ~/django.nv
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo "hello" > hello.txt
+          when: always
+      - store_artifacts:
+          path: /.circleci
+          
+          
 workflows:
   version: 2
   django:
@@ -44,3 +55,4 @@ workflows:
       - test
       - integration
       - prod
+      - articfact
