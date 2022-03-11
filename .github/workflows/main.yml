@@ -40,7 +40,7 @@ jobs:
       with:
         projectBaseDir: .
         args: >
-          -Dsonar.projectKey=Django
+          -Dsonar.projectKey=Django-github
 
   test:
     runs-on: ubuntu-latest
