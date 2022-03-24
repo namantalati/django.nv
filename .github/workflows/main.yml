@@ -5,25 +5,7 @@ on:
     branches:                                 # similar to "only" in GitLab
       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest                    # similar to "image" in GitLab
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.6'
-
-      - run: |
-          pip3 install --upgrade virtualenv
-          virtualenv env
-          source env/bin/activate
-          pip install -r requirements.txt
-          python manage.py check
-          echo "$pwd"
-  
+jobs:  
   Fortify-SAST:
     # Use the appropriate runner for building your source code
     runs-on: ubuntu-latest 
@@ -56,7 +38,7 @@ jobs:
       #   ScanCentral Client will download dependencies for maven, gradle and msbuild projects.
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
       - name: Perform SAST Scan
-        run: scancentral -url ${SC_CONTROLLER_URL} start $BUILD_OPTS -upload -application $APPLICATION -version $VERSION -uptoken $SSC_UPLOAD_TOKEN
+        run: scancentral --version
         env:                                            
           SC_CONTROLLER_URL: $SC_CONTROLLER_URL
           SSC_UPLOAD_TOKEN: $SSC_UPLOAD_TOKEN
