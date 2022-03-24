@@ -62,7 +62,7 @@ jobs:
           SSC_UPLOAD_TOKEN: $SSC_UPLOAD_TOKEN
           APPLICATION: $APPLICATION
           VERSION: $VERSION
-          BUILD_OPTS: "-bt mvn"
+          BUILD_OPTS: "-bt mvn -h"
       ### Archive ScanCentral Client logs on failure ###
       - name: Save ScanCentral Logs
         uses: actions/upload-artifact@v2                
