@@ -70,9 +70,3 @@ jobs:
         with:
            name: scancentral-logs
            path: ~/.fortify/scancentral/log
-
-  prod:
-    runs-on: ubuntu-latest
-    needs: integration
-    steps:
-      - run: echo "This is a deploy step."
