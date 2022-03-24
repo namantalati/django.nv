@@ -22,6 +22,7 @@ jobs:
           source env/bin/activate
           pip install -r requirements.txt
           python manage.py check
+          echo "$pwd"
   
   Fortify-SAST:
     # Use the appropriate runner for building your source code
