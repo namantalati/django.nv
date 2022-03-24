@@ -27,7 +27,7 @@ jobs:
   Fortify-SAST:
     # Use the appropriate runner for building your source code
     runs-on: ubuntu-latest 
-    if: always()
+    
     steps:
       # Check out source code
       - name: Check Out Source Code
@@ -66,7 +66,5 @@ jobs:
       ### Archive ScanCentral Client logs on failure ###
       - name: Save ScanCentral Logs
         uses: actions/upload-artifact@v2                
-        if: failure()
-        with:
-           name: scancentral-logs
-           path: ~/.circleci
+        if: always()
+
